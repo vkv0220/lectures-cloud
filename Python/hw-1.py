@@ -1,4 +1,4 @@
-sfrom math import pi
+from math import pi
 
 def print_type(variable):
     """This function prints the type of supplied variable
