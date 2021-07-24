@@ -105,7 +105,8 @@ def format_with_percent(data: Metrics):
     # ... write the code...
     # temporary string is fine here too
     stringtemp = {"pid" : hex(int(data.agent_address)), "cpu" : data.cpu_data[7], "memory_used" : data.memory_used, "load_avg" : data.load_avg }
-    s1 = "'"+"{:" ">64}".format("[%(pid)s] CPU #7: %(cpu)s%%, Memory used: %(memory_used)s, Load avg: %(load_avg).02f" % stringtemp) +"'"
+    s1 = "{:" ">64}".format("[%(pid)s] CPU #7: %(cpu)s%%, Memory used: %(memory_used)s, Load avg: %(load_avg).02f" % stringtemp)
+    return s1
 
 #### Tests ####
 
