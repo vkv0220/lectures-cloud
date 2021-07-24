@@ -22,8 +22,10 @@ def accepts_function(fn):
 def sum_numbers(*args) -> int:
     """This functions accepts any number of integers and return a sum of them (don't use built-in `sum`)"""
     # write code here
-    return sum(args)
-
+    summ = 0
+    for num in args:
+        summ += num
+    return summ
 
 def avg(*args) -> int:
     """This function accepts any number of integers and returns mean of them (average)"""
