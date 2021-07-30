@@ -21,8 +21,9 @@ def my_collecion_generator() -> Generator[
         random_str = "".join([random.choice(string.ascii_lowercase) for _ in range(8)])
         yield random_str
 
+
 # mygen = my_collecion_generator()
-#print(next(mygen)[::-1])
+# print(next(mygen)[::-1])
 
 
 def take_n(g: Generator[str, None, None], n: int) -> List[str]:
@@ -37,7 +38,9 @@ def take_n(g: Generator[str, None, None], n: int) -> List[str]:
     """
     return [next(g) for _ in range(n)]
 
-#print(take_n(mygen, 10))
+
+# print(take_n(mygen, 10))
+
 
 class InfiniteGeneratorWrapper:
     """This class should wrap a generator we defined above (tests will pass it to the __init__)
@@ -49,27 +52,25 @@ class InfiniteGeneratorWrapper:
             Note: binascii will asks for bytes, but you have a str, to convert str to bytes, you'll need to use str.encode https://docs.python.org/3/library/stdtypes.html#str.encode
        • return AT MOST max_elements! (Don't forget that generator is infinite!)
     """
+
     def __init__(self, g: Generator[str, None, None], max_elements=1000) -> None:
         # insert code here
-        self.index =0
+        self.index = 0
         self.max_elements = max_elements
         self.g = g
-        #pass
+
     def __iter__(self):
         return self
+
     def __next__(self):
         if self.index == self.max_elements:
             self.index = 0
             raise StopIteration
         el = binascii.b2a_hex(str.encode(next(self.g)[::-1])).decode()
         # print(el)
-        self.list.append(el)
-        self.index +=1
+        self.index += 1
         return el
 
-# test = InfiniteGeneratorWrapper(my_collecion_generator, 15)
-# for i in test:
-#     print(i)
 
 class BaseRule:  # this is our base class
     deny_reason = "decided to keep {item} because i'm a base class"
@@ -114,6 +115,7 @@ class KeepEverythingStartsFrom(BaseRule):
         else:
             return self.deny(item)
 
+
 class DenyEverythingStartsFrom(BaseRule):
     def __init__(self, starts_from: str):
         super().__init__()
@@ -124,6 +126,7 @@ class DenyEverythingStartsFrom(BaseRule):
             return self.deny(item)
         else:
             return self.allow(item)
+
 
 def test_ruleset(items):
     rules = [
