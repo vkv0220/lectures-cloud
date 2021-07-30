@@ -51,7 +51,6 @@ class InfiniteGeneratorWrapper:
     """
     def __init__(self, g: Generator[str, None, None], max_elements=1000) -> None:
         # insert code here
-        self.list = []
         self.index =0
         self.max_elements = max_elements
         self.g = g
