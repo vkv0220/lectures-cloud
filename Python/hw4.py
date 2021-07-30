@@ -104,13 +104,27 @@ class BaseRule:  # this is our base class
 # The `test_ruleset` function is used by tests to verify the actual logic.
 
 
-class KeepEverythingStartsFrom:
-    pass
+class KeepEverythingStartsFrom(BaseRule):
+    def __init__(self, starts_from: str):
+        super().__init__()
+        self.starts_from = starts_from
 
+    def check(self, item):
+        if item.startswith(self.starts_from):
+            return self.allow(item)
+        else:
+            return self.deny(item)
 
-class DenyEverythingStartsFrom:
-    pass
+class DenyEverythingStartsFrom(BaseRule):
+    def __init__(self, starts_from: str):
+        super().__init__()
+        self.starts_from = starts_from
 
+    def check(self, item):
+        if item.startswith(self.starts_from):
+            return self.deny(item)
+        else:
+            return self.allow(item)
 
 def test_ruleset(items):
     rules = [
