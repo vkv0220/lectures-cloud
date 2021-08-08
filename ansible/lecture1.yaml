@@ -1,0 +1,50 @@
+---
+- name: Update first aws server
+  hosts: aws_first_server
+  become: yes
+  remote_user: ubuntu
+  become_user: root
+
+  tasks:
+    - name: Install dependencies for awscli
+      apt:
+        name: "python3-pip"
+        state: latest
+        update_cache: yes
+
+    - name: Install awscli with pip3
+      pip:
+        name: "awscli"
+        executable: pip3
+
+    - name: Touch a file awscli_installed
+      ansible.builtin.file:
+        path: ~/awscli_installed
+        state: touch
+        mode: u=rw,g=r,o=r
+
+    - name: Copy file awscli_installed to s3 bucket
+      ansible.builtin.shell:
+        cmd: aws s3 cp ~/awscli_installed s3://mybucket/awscli_installed
+
+- name: Update second aws server
+  hosts: aws_second_server
+  become: yes
+  remote_user: ubuntu
+  become_user: root
+
+  tasks:
+     - name: Touch the script
+       command: echo touch second_play_execution > /home/ubuntu/secondplay.sh
+
+     - name: Execute the script
+       command: sh /home/ubuntu/secondplay.sh
+
+- name: Update second aws server
+  hosts: aws_servers
+  become: yes
+  remote_user: ubuntu
+  become_user: root
+
+
+  sudo yum install amazon-cloudwatch-agent
