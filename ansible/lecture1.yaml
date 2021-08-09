@@ -24,8 +24,7 @@
         mode: u=rw,g=r,o=r
 
     - name: Copy file awscli_installed to s3 bucket
-      shell:
-        cmd: aws s3 cp ~/awscli_installed s3://lectures-vkv/
+      shell: aws s3 cp ~/awscli_installed s3://lectures-vkv/
 
 - name: Create and run script on the second aws server
   hosts: aws_second_server
@@ -35,11 +34,10 @@
 
   tasks:
      - name: Touch the script
-       shell:
-        cmd: echo touch second_play_execution > /home/ubuntu/secondplay.sh
+       shell: echo touch second_play_execution > /home/ubuntu/secondplay.sh
 
      - name: Execute the script
-       command: sh /home/ubuntu/secondplay.sh
+       shell: sh /home/ubuntu/secondplay.sh
 
 
 - name: Download and install cloudwatch agent on the both servers
