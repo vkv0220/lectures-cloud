@@ -1,0 +1,7 @@
+---
+- name: Upgrade all packages to the latest version
+  apt:
+    name: "*"
+    force_apt_get: yes
+    state: latest
+    update_cache: yes
