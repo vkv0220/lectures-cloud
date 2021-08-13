@@ -7,7 +7,7 @@ app = Flask(__name__)
 param=os.environ.get('NAME')
 api_key=os.environ.get('API_KEY')
 
-request_string=f"https://api.openweathermap.org/data/2.5/weather?q=Tomsk&units=metric&appid={api_key}"
+request_string=f"https://api.openweathermap.org/data/2.5/weather?id=1489425&lang=ru&units=metric&appid={api_key}"
 
 
 response = requests.get(request_string)
