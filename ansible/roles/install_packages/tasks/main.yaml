@@ -7,7 +7,7 @@
 
 - name: Install modules with pip3
   pip:
-    name: "{{item}}"
+    name: "{{ item }}"
     executable: pip3
   loop:
       - awscli

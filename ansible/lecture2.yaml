@@ -21,7 +21,7 @@
   roles:
     - install_packages
 
-  tasks:
+  post_tasks:
     - name: Touch a file awscli_installed
       file:
         path: /home/ubuntu/awscli_installed
@@ -29,7 +29,7 @@
         mode: '0644'
 
     - debug:
-        msg: "s3://{{s3_bucket}}/"
+        msg: "s3://{{ s3_bucket }}/"
 
     - name: Copy file awscli_installed to s3 bucket
       aws_s3:
