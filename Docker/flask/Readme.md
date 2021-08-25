@@ -1,7 +1,7 @@
 Simple CI/CD project on github. You can use part of the project for your own purposes
 
 1. hello.py - flask app, works with postgres database, shows current temp in Tomsk)
-2. Dockerfile - to build docker container with requirements to run your own container with flask app
+2. Dockerfile - to build docker container with requirements. To run your own container with flask app
 you can run you own container via cmd from dockerhub:
 docker run -d -e API_KEY=InsertYouApiKeyHere -e NAME="InsertYouNameHere" -p 5000:5000 vkv0220/flask:latest
 ApiKey you can find at http://api.openweathermap.org/
