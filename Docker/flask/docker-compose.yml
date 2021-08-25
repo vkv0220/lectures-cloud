@@ -26,7 +26,8 @@ services:
 
   backend:
     container_name: backend
-    build: .
+    #build: .
+    image: vkv0220/flask:2.0
     networks:
       - db-app
     environment:
