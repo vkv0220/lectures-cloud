@@ -1,3 +1,5 @@
+https://app.travis-ci.com/vkv0220/lectures-cloud.svg?branch=Docker
+
 Simple CI/CD project on github. You can use part of the project for your own purposes
 
 1. hello.py - flask app, works with postgres database, shows current temp in Tomsk)
