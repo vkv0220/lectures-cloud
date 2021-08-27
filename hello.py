@@ -2,21 +2,17 @@ from flask import Flask
 import requests
 import json
 import os
-import sys
 import psycopg2
 
 app = Flask(__name__)
 param = os.environ.get('NAME')
 api_key = os.environ.get('API_KEY')
+api_url = "https://api.openweathermap.org/data/2.5/"
 
-request_string = f"https://api.openweathermap.org/data/2.5/weather?id=1489425&lang=ru&units=metric&appid={api_key}"
+req_str = f"{api_url}weather?id=1489425&lang=ru&units=metric&appid={api_key}"
 
-response = requests.get(request_string)
+response = requests.get(req_str)
 res_text = json.loads(response.text)
-print(res_text['name'])
-print(res_text['main']['temp'])
-print(param)
-print(sys.argv[1])
 
 
 def connect():
