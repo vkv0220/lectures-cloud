@@ -1,5 +1,0 @@
-{% if server_name == 'second_server' %}
-echo {{ server_name }}
-{% else %}
-some other text here with nothing
-{% endif %}

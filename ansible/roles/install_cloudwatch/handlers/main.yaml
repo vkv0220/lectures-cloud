@@ -1,5 +1,0 @@
----
-- name: Cloudwatch agent is configured
-  service:
-    name: amazon-cloudwatch-agent
-    state: started
