@@ -1,4 +1,4 @@
-https://app.travis-ci.com/vkv0220/lectures-cloud.svg?branch=Docker
+Travis CI Build status <img src="https://app.travis-ci.com/vkv0220/lectures-cloud.svg?branch=Docker" width="100">
 
 Simple CI/CD project on github. You can use part of the project for your own purposes
 
