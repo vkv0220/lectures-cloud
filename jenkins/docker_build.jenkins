@@ -34,8 +34,10 @@ pipeline {
     }
 
     stage("Docker push") {
+      steps {
       withCredentials([usernamePassword(credentialsId: 'dockerhub_vkv', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
         pushToImage( 'vkv0220/flask' , '2.0', USERNAME, PASSWORD)
+    }
     }
       // steps {
       //   echo "pushing image"
