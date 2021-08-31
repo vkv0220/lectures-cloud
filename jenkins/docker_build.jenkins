@@ -18,7 +18,6 @@ pipeline {
           sh "docker login -u $USERNAME -p $PASSWORD"
         }
       }
-    }
 
     stage("create docker image") {
       steps {
@@ -36,5 +35,6 @@ pipeline {
           sh 'docker push vkv0220/flask:2.0'
       }
     }
+  }
 
 }
