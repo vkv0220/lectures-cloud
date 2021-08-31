@@ -1,6 +1,7 @@
 #!groovy
 pipeline {
     agent any
+    triggers { poolSCM('H/10 * * * *') }
     stages {
         stage('Checkout external project') {
             steps {

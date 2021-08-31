@@ -4,7 +4,7 @@ properties([disableConcurrentBuilds()])
 
 pipeline {
   agent any
-
+  triggers { poolSCM('H/10 * * * *') }
   options {
     buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
     timestamps()
