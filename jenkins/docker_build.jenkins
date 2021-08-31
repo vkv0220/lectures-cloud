@@ -16,7 +16,7 @@ pipeline {
         echo "start building image"
         dir ('.') {
           //sh 'docker build -t vkv0220/flask:2.0 . '
-          sh 'docker-compose --build'
+          sh 'docker-compose build'
         }
       }
     }
