@@ -27,7 +27,6 @@ def connect():
             password="app_pass")
         cur = conn.cursor()
         datalist = []
-# cur.execute('SELECT version()')
         cur.execute('CREATE TABLE IF NOT EXISTS apptable \
         (id SERIAL PRIMARY KEY, value VARCHAR(255) NOT NULL)')
         sql = f"INSERT INTO apptable (value) VALUES \
