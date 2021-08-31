@@ -1,0 +1,35 @@
+#!groovy
+pipeline {
+    agent any
+    stages {
+        stage('Checkout external project') {
+            steps {
+                git branch: 'Docker',
+                    url: 'https://github.com/vkv0220/lectures-cloud.git'
+                sh 'ls -lat'
+            }
+        }
+
+        stage('Prepare') {
+            steps {
+                sh 'pip3 install pytest'
+                sh 'pip3 install -r requirements.txt'
+                sh 'pip3 install pytest-flake8'
+            }
+        }
+
+        stage('Check source code'){
+            steps {
+                sh 'python3 -m pytest --flake8 hello.py'
+            }
+        }
+
+        /* stage("Prepare build image") {
+            steps {
+                sh "docker build -t vkv0220/flask:2.0 ."
+            }
+        }
+        */
+    }
+
+}
