@@ -12,17 +12,6 @@ pipeline {
 
   stages {
 
-    // stage("docker login") {
-    //         steps {
-    //             echo "docker login"
-    //             withCredentials([usernamePassword(credentialsId: 'dockerhub_vkv', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-    //                 sh """
-    //                 docker login -u $USERNAME -p $PASSWORD
-    //                 """
-    //             }
-    //         }
-    //     }
-
     stage("create docker image") {
       steps {
         echo "start building image"
@@ -31,18 +20,6 @@ pipeline {
           sh 'docker-compose build'
         }
       }
-    }
-
-    stage("Docker push") {
-      steps {
-      withCredentials([usernamePassword(credentialsId: 'dockerhub_vkv', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-        pushToImage( 'vkv0220/flask' , '2.0', USERNAME, PASSWORD)
-    }
-    }
-      // steps {
-      //   echo "pushing image"
-      //     sh 'docker push vkv0220/flask:2.0'
-      // }
     }
   }
 
