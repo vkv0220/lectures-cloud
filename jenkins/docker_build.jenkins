@@ -1,0 +1,26 @@
+#!groovy
+//run docker build
+properties([disableConcurrentBuilds()])
+
+pipeline {
+  agent {
+    label 'master'
+  }
+
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+    timestamps()
+  }
+
+  stages {
+    stage("create docker image") {
+      steps {
+        echo "start building image"
+        dir ('.') {
+          sh 'docker build -t vkv0220/flask:2.0 . '
+        }
+      }
+    }
+  }
+
+}
